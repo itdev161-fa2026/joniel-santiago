@@ -12,15 +12,15 @@ const PostDetail = () => {
 
     useEffect(() => {
     const fetchPost = async () => {
-    try {
+        try {
         setLoading(true);
         const data = await getPostById(id);
         setPost(data);
         setError(null);
-    } catch (err) {
+        } catch (err) {
         setError('Failed to load post. It may not exist or the server is down.');
         console.error(err);
-    } finally {
+        } finally {
         setLoading(false);
         }
     };
@@ -31,11 +31,11 @@ const PostDetail = () => {
     const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     return new Date(dateString).toLocaleDateString(undefined, options);
-    };
+};
 
     if (loading) {
     return <div className="container loading">Loading post...</div>;
-    }
+}
 
     if (error) {
     return (
@@ -65,7 +65,7 @@ const PostDetail = () => {
         </div>
         <div className="post-detail-body">
         {post.body.split('\n').map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
+        <p key={index}>{paragraph}</p>
         ))}
         </div>
         {/* Edit and Delete buttons will be added in Activity 9 */}
